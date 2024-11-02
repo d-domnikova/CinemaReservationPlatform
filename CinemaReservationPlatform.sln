@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaReservationAPI", "CinemaReservationAPI\CinemaReservationAPI.csproj", "{F3ABC120-3AD4-48DF-AC69-56BDF2ABC2EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaReservationAPI", "CinemaReservationAPI\CinemaReservationAPI.csproj", "{F3ABC120-3AD4-48DF-AC69-56BDF2ABC2EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieServiceDAL", "MovieServiceDAL\MovieServiceDAL.csproj", "{AA48BE82-1B2F-4584-BD43-1763219EF531}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieServiceBLL", "MovieServiceBLL\MovieServiceBLL.csproj", "{A5E28B2F-6E80-4618-917A-604F4334C774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieServiceDAL", "MovieServiceDAL\MovieServiceDAL.csproj", "{AA48BE82-1B2F-4584-BD43-1763219EF531}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{AA48BE82-1B2F-4584-BD43-1763219EF531}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA48BE82-1B2F-4584-BD43-1763219EF531}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA48BE82-1B2F-4584-BD43-1763219EF531}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5E28B2F-6E80-4618-917A-604F4334C774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5E28B2F-6E80-4618-917A-604F4334C774}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5E28B2F-6E80-4618-917A-604F4334C774}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5E28B2F-6E80-4618-917A-604F4334C774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
