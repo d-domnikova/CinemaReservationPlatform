@@ -107,5 +107,10 @@ namespace ReservationAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { e.Message });
             }
         }
+
+        public TicketTypeController(ITicketTypeService ticketTypeService)
+        {
+            this.ticketTypeService = ticketTypeService;
+        }
     }
 }

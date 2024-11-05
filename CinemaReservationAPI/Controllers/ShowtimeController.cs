@@ -31,7 +31,7 @@ namespace CinemaReservationAPI.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Transaction Failed! Something went wrong inside GetAllShowTimeAsync() action: {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error {ex.Message}");
             }
         }
 
@@ -73,7 +73,7 @@ namespace CinemaReservationAPI.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong inside GetByIdAsync() action: {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error {ex.Message}");
             }
         }
 
@@ -100,7 +100,7 @@ namespace CinemaReservationAPI.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong inside PostShowTimeAsync() action: {ex.Message}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, $"Internal server error {ex.Message}");
             }
         }
 

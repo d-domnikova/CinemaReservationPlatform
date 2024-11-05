@@ -3,10 +3,15 @@ using System.Data.SqlClient;
 using System.Data;
 using MovieServiceDAL.Repositories.Interfaces;
 using MovieServiceDAL.Repositories;
+using Dapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddControllers();
+
+SqlMapper.AddTypeHandler(new SqlTimeOnlyTypeHandler());
 
 //CONFIG FILES
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());

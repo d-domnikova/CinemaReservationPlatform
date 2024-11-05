@@ -2,6 +2,6 @@
 {
     public class TicketTypeParameters : QueryStringParameters
     {
-        public string Type { get; set; }
+        public string? Type { get; set; }
     }
 }

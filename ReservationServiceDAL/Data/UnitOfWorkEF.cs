@@ -1,5 +1,4 @@
-﻿
-using ReservationServiceDAL.Interfaces;
+﻿using ReservationServiceDAL.Interfaces;
 using ReservationServiceDAL.Interfaces.Repositories;
 
 namespace ReservationServiceDAL.Data
@@ -9,6 +8,13 @@ namespace ReservationServiceDAL.Data
         protected readonly ReservationServiceContext dbContext;
         public IReservationRepository ReservationRepository { get; }
         public ITicketTypeRepository TicketTypeRepository { get; }
+
+        public UnitOfWorkEF(ReservationServiceContext dbContext, IReservationRepository reservationRepository, ITicketTypeRepository ticketTypeRepository)
+        {
+            this.dbContext = dbContext;
+            ReservationRepository = reservationRepository;
+            TicketTypeRepository = ticketTypeRepository;
+        }
 
         public async Task SaveChangesAsync()
         {

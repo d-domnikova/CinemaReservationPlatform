@@ -24,6 +24,18 @@ namespace ReservationServiceBLL.Validations.Requests
                 .WithMessage(reservation => $"{nameof(reservation.ShowtimeId)} should be greater than 0.")
                 .NotEmpty()
                 .WithMessage(reservation => $"{nameof(reservation.ShowtimeId)} can't be empty.");
+
+            RuleFor(reservation => reservation.Amount)
+             .GreaterThan(0)
+             .WithMessage(reservation => $"{nameof(reservation.Amount)} should be greater than 0.")
+             .NotEmpty()
+             .WithMessage(reservation => $"{nameof(reservation.Amount)} can't be empty.");
+
+            RuleFor(reservation => reservation.TicketTypeId)
+             .GreaterThan(0)
+             .WithMessage(reservation => $"{nameof(reservation.TicketTypeId)} should be greater than 0.")
+             .NotEmpty()
+             .WithMessage(reservation => $"{nameof(reservation.TicketTypeId)} can't be empty.");
         }
     }
 }
