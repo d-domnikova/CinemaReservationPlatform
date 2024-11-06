@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservationAPI", "Reservati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservationServiceDAL", "ReservationServiceDAL\ReservationServiceDAL.csproj", "{ECF4291F-5968-41B6-A3C0-BAA89CAFBE80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationServiceBLL", "ReservationServiceBLL\ReservationServiceBLL.csproj", "{F4BB9BB4-9A92-4B62-B577-5A5D76139312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservationServiceBLL", "ReservationServiceBLL\ReservationServiceBLL.csproj", "{F4BB9BB4-9A92-4B62-B577-5A5D76139312}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{B772F5AE-7D70-451C-AB27-137E6CC33934}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3633E42C-5FD8-499C-99EE-C59A1065F8D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{F4BB9BB4-9A92-4B62-B577-5A5D76139312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4BB9BB4-9A92-4B62-B577-5A5D76139312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4BB9BB4-9A92-4B62-B577-5A5D76139312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B772F5AE-7D70-451C-AB27-137E6CC33934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B772F5AE-7D70-451C-AB27-137E6CC33934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B772F5AE-7D70-451C-AB27-137E6CC33934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B772F5AE-7D70-451C-AB27-137E6CC33934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3633E42C-5FD8-499C-99EE-C59A1065F8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3633E42C-5FD8-499C-99EE-C59A1065F8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3633E42C-5FD8-499C-99EE-C59A1065F8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3633E42C-5FD8-499C-99EE-C59A1065F8D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

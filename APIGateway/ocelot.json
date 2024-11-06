@@ -1,0 +1,125 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8001"
+  },
+  "Routes": [
+    //Movie API
+    {
+      "UpstreamPathTemplate": "/api/Movie/",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+
+      "DownstreamPathTemplate": "/api/Movie/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "SwaggerKey": "movie",
+      "RateLimitOptions": {
+        "Period": "2s",
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "Header": "Movie-Caching",
+        "TtlSeconds": 30,
+        "EnableContentHashing": true
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/Movie/{everything}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+
+      "DownstreamPathTemplate": "/api/Movie/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "SwaggerKey": "movie",
+      "RateLimitOptions": {
+        "Period": "2s",
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "Header": "Movie-Caching",
+        "TtlSeconds": 30,
+        "EnableContentHashing": true
+      }
+    },
+    //Reservation API
+    {
+      "UpstreamPathTemplate": "/api/Reservation",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+
+      "DownstreamPathTemplate": "/api/Reservation",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "SwaggerKey": "reservation",
+      "RateLimitOptions": {
+        "Period": "2s",
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "Header": "Reservation-Caching",
+        "TtlSeconds": 30,
+        "EnableContentHashing": true
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/Reservation/{everything}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+
+      "DownstreamPathTemplate": "/api/Reservation/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "SwaggerKey": "reservation",
+      "RateLimitOptions": {
+        "Period": "2s",
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "Header": "Reservation-Caching",
+        "TtlSeconds": 30,
+        "EnableContentHashing": true
+      }
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "Movie",
+      "Config": [
+        {
+          "Name": "Movie API",
+          "Version": "v1",
+          "Url": "http://localhost:8002/swagger/v1/swagger.json"
+        }
+      ]
+    },
+
+    {
+      "Key": "Reservation",
+      "Config": [
+        {
+          "Name": "Reservation API",
+          "Version": "v1",
+          "Url": "http://localhost:8003/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}
+

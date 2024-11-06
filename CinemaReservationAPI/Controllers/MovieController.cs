@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using MovieServiceDAL.Entities;
 using MovieServiceDAL.Repositories.Interfaces;
 
@@ -11,10 +12,15 @@ namespace CinemaReservationAPI.Controllers
         private readonly ILogger<MovieController> _logger;
 
         private IUnitOfWorkDapper _unitofWork;
-        public MovieController(ILogger<MovieController> logger, IUnitOfWorkDapper unitofWork)
+
+        private readonly IMemoryCache _memoryCache;
+
+        private readonly string cacheKey = "getMoviesCacheKey";
+        public MovieController(ILogger<MovieController> logger, IUnitOfWorkDapper unitofWork, IMemoryCache memoryCache)
         {
             _logger = logger;
             _unitofWork = unitofWork;
+            _memoryCache = memoryCache;
         }
 
 
@@ -23,8 +29,24 @@ namespace CinemaReservationAPI.Controllers
         {
             try
             {
-                var results = await _unitofWork._movieRepository.GetAllAsync();
+                var results = (List<Movie>)await _unitofWork._movieRepository.GetAllAsync();
                 _unitofWork.Commit();
+                if (_memoryCache.TryGetValue(cacheKey, out IEnumerable<Movie> movies))
+                {
+                    _logger.Log(LogLevel.Information, "Movies found in cache.");
+                }
+                else
+                {
+                   _logger.Log(LogLevel.Information, "There are no movies in the cache. Loading them...");
+                   
+                    var cacheEntryOptions = new MemoryCacheEntryOptions()
+                        .SetSlidingExpiration(TimeSpan.FromSeconds(45))
+                        .SetAbsoluteExpiration(TimeSpan.FromSeconds(3600))
+                        .SetPriority(CacheItemPriority.Normal);
+
+                    _memoryCache.Set(cacheKey, results, cacheEntryOptions);
+                }
+
                 _logger.LogInformation($"Returned all movies from database.");
                 return Ok(results);
             }

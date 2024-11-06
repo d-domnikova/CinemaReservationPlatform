@@ -1,0 +1,57 @@
+networks:
+    cinemareservation:
+
+services:
+  mssqlserver:
+    container_name: mssqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 8433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    ports:
+      - 8001:80
+    networks:
+      - cinemareservation
+    environment:
+      - ASPNETCORE_ENVIRONMENT
+
+  movieapi:
+    container_name: movie-service
+    image: ${DOCKER_REGISTRY-}movieapi
+    build:
+      context: .
+      dockerfile: CinemaReservationAPI/Dockerfile
+    ports:
+      - 8002:80
+    depends_on:
+      - mssqlserver
+    environment:
+      - DB_HOST=LAPTOP-2DRKP9DN\\SQLEXPRESS
+      - DB_NAME=MovieDb
+    networks:
+      - cinemareservation
+
+  reservationapi:
+    container_name: reservation-service
+    image: ${DOCKER_REGISTRY-}reservationapi
+    build:
+      context: .
+      dockerfile: ReservationAPI/Dockerfile
+    ports:
+      - 8003:80
+    depends_on:
+      - mssqlserver
+    environment:
+      - DB_HOST=LAPTOP-2DRKP9DN\\SQLEXPRESS
+      - DB_NAME=ReservationDb
+    networks:
+      - cinemareservation

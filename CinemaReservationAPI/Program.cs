@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "MovieService API",
+        Title = "Movie API",
         Description = "Ado.Net & Dapper part of Asp.Net project"
     });
 });
@@ -46,15 +46,12 @@ builder.Services.AddScoped<IUnitOfWorkDapper, UnitOfWork>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI(opt => opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Movie API v1"));
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 
