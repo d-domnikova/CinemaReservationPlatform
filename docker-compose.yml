@@ -55,3 +55,19 @@ services:
       - DB_NAME=ReservationDb
     networks:
       - cinemareservation
+
+  jwtauthenticationapi:
+    container_name: jwt-authentication
+    image: ${DOCKER_REGISTRY-}jwtauthenticationapi
+    build:
+      context: .
+      dockerfile: JWTAuthenticationAPI/Dockerfile
+    ports:
+      - 8004:80 
+    depends_on:
+      - mssqlserver
+    environment:
+      - DB_HOST=LAPTOP-2DRKP9DN\\SQLEXPRESS
+      - DB_NAME=JWTAuthenticationDb
+    networks:
+      - cinemareservation

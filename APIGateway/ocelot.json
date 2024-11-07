@@ -29,7 +29,7 @@
     },
     {
       "UpstreamPathTemplate": "/api/Movie/{everything}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE" ],
 
       "DownstreamPathTemplate": "/api/Movie/{everything}",
       "DownstreamScheme": "http",
@@ -96,8 +96,33 @@
         "TtlSeconds": 30,
         "EnableContentHashing": true
       }
+    },
+    //Jwt API
+    {
+      "UpstreamPathTemplate": "/api/Users/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+
+      "DownstreamPathTemplate": "/api/Users/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "SwaggerKey": "reservation",
+      "RateLimitOptions": {
+        "Period": "2s",
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "Header": "Reservation-Caching",
+        "TtlSeconds": 30,
+        "EnableContentHashing": true
+      }
     }
   ],
+
   "SwaggerEndPoints": [
     {
       "Key": "Movie",
